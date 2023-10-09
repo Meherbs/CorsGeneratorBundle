@@ -4,7 +4,6 @@ namespace Mbs\CorsGeneratorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 
 class Configuration implements ConfigurationInterface
@@ -16,7 +15,6 @@ class Configuration implements ConfigurationInterface
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
-            // BC for symfony/config < 4.2
             $rootNode = $treeBuilder->root('cors_generator');
         }
 
@@ -32,10 +30,10 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function getAllowCredentials(): BooleanNodeDefinition
+    private function getAllowCredentials(): ScalarNodeDefinition
     {
-        $node = new BooleanNodeDefinition('allow_credentials');
-        $node->defaultFalse();
+        $node = new ScalarNodeDefinition('allow_credentials');
+        $node->defaultValue('%env(cors_generator_allow_credentials)%')->end();
 
         return $node;
     }
@@ -45,7 +43,7 @@ class Configuration implements ConfigurationInterface
         $node = new ScalarNodeDefinition('allow_origin');
 
         $node
-            ->defaultValue('*')
+            ->defaultValue('%env(cors_generator_allow_origin)%')
             ->end()
         ;
 
@@ -57,7 +55,7 @@ class Configuration implements ConfigurationInterface
         $node = new ScalarNodeDefinition('allow_headers');
 
         $node
-            ->defaultValue('Content-Type, Authorization')   
+            ->defaultValue('%env(cors_generator_allow_headers)%')   
             ->end();
 
         return $node;
@@ -67,7 +65,7 @@ class Configuration implements ConfigurationInterface
     {
         $node = new ScalarNodeDefinition('allow_methods');
 
-        $node->defaultValue('POST, GET')->end();
+        $node->defaultValue('%env(cors_generator_allow_methods)%')->end();
 
         return $node;
     }
@@ -77,12 +75,7 @@ class Configuration implements ConfigurationInterface
         $node = new ScalarNodeDefinition('max_age');
 
         $node
-            ->defaultValue(3600)
-            ->validate()
-                ->ifTrue(function ($v) {
-                    return !is_numeric($v);
-                })
-                ->thenInvalid('max_age must be an integer (seconds)')
+            ->defaultValue('%env(cors_generator_max_age)%')
             ->end()
         ;
 
