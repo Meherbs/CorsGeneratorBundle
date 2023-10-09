@@ -1,6 +1,6 @@
 {
     "description": "Set cors headers using symfony event listener",
-    "name": "crosssymfony/cors-generator-bundle",
+    "name": "cross-symfony/cors-generator-bundle",
     "type": "symfony-bundle",
     "require": {
         "php": ">=7.1",
