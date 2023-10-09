@@ -1,6 +1,6 @@
 <?php
 
-namespace CrossSymfony\CorsGeneratorBundle\EventListener;
+namespace Mbs\CorsGeneratorBundle\EventListener;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;

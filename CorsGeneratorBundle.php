@@ -1,11 +1,11 @@
 <?php
 
-namespace CrossSymfony\CorsGeneratorBundle;
+namespace Mbs\CorsGeneratorBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use CrossSymfony\CorsGeneratorBundle\EventListener\ResponseListener;
-use CrossSymfony\CorsGeneratorBundle\DependencyInjection\CorsGeneratorExtension;
+use Mbs\CorsGeneratorBundle\EventListener\ResponseListener;
+use Mbs\CorsGeneratorBundle\DependencyInjection\CorsGeneratorExtension;
 
 class CorsGeneratorBundle extends Bundle
 {

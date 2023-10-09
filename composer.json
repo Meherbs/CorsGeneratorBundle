@@ -1,6 +1,6 @@
 {
     "description": "Set cors headers using symfony event listener",
-    "name": "cross-symfony/cors-generator-bundle",
+    "name": "mbs/cors-generator-bundle",
     "type": "symfony-bundle",
     "require": {
         "php": ">=7.1",
@@ -8,12 +8,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CrossSymfony\\CorsGeneratorBundle\\": "src/"
+            "Mbs\\CorsGeneratorBundle\\": ""
         }
     },
     "extra": {
         "symfony": {
-            "bundle-dir": "CrossSymfony/CorsGeneratorBundle"
+            "bundle-dir": "Mbs/CorsGeneratorBundle"
         }
     },
     "license": "MIT",

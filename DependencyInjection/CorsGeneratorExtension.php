@@ -1,12 +1,12 @@
 <?php
 
-namespace CrossSymfony\CorsGeneratorBundle\DependencyInjection;
+namespace Mbs\CorsGeneratorBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
-use CrossSymfony\CorsGeneratorBundle\DependencyInjection\Configuration;
+use Mbs\CorsGeneratorBundle\DependencyInjection\Configuration;
 use Symfony\Component\Yaml\Yaml;
 
 class CorsGeneratorExtension extends Extension
